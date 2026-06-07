@@ -39,44 +39,34 @@
       }
     </style>
 <br><br>
-<a href="quotes.html">Explore Astronomical Quotes 🌟</a>
- <style>
-      a {
-        color: rgb(200, 255, 0)      ;
-        display: inline-block;
-        margin-top: 20px;
-      }
-    </style>
-<br><br>
-<h2>Latest Space News</h2>
-<ul id="news"></ul>
+<h2 id="git add "></h2>
+<BR><BR>
 <script>
+  const quotes = [
+    "The universe is full of magical things, patiently waiting for our wits to grow sharper. - Eden Phillpotts",
+    "Somewhere, something incredible is waiting to be known. - Carl Sagan",
+    "The cosmos is within us. We are made of star-stuff. We are a way for the universe to know itself. - Carl Sagan",
+    "The Earth is a very small stage in a vast cosmic arena. - Carl Sagan",
+    "We are all made of star-stuff. - Carl Sagan",
+    "The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of star-stuff. - Carl Sagan",
+    "The universe is not only stranger than we imagine, it is stranger than we can imagine. - J.B.S. Haldane",
+    "The cosmos is all that is or ever was or ever will be. - Carl Sagan",
+    "The universe is under no obligation to make sense to you. - Neil deGrasse Tyson",
+    "The universe is a pretty big place. If it's just us, seems like an awfully big waste of space. - Carl Sagan",
+    "The universe is not only queerer than we suppose, but queerer than we can suppose. - J.B.S. Haldane",
+    "The universe is a grand book which cannot be read until one has learned to comprehend the language and interpret the characters in which it is written. - Galileo Galilei"
+  ];
 
-  const proxy = "https://api.allorigins.win/get?url=";
-  const feedUrl = "https://www.nasa.gov/rss/dyn/breaking_news.rss";
-
-  fetch(proxy + encodeURIComponent(feedUrl))
-    .then(response => response.json())
-    .then(data => {
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data.contents, "application/xml");
-      const items = xml.querySelectorAll("item");
-
-      let html = "";
-      items.forEach((item, index) => {
-        if (index < 5) {
-          const title = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
-          html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
-        }
-      });
-
-      document.getElementById("news").innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById("news").innerHTML = "<li>Could not load space news.</li>";
-    });
+  // Pick a random quote
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quote").innerText = quotes[randomIndex];
 </script>
+
+<br><br>
+<h2>Latest NASA News</h2>
+<ul id="news"></ul>
+<iframe src="https://www.nasa.gov/news-release/" width="100%" height="500"></iframe>
+
 <br><br>
 <br><br>
 <strong>For more exciting content and to get involved in citizen science projects, check out the NASA Citizen Science website!</strong>
