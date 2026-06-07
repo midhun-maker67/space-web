@@ -51,52 +51,31 @@
 <h2>Latest Space News</h2>
 <ul id="news"></ul>
 <script>
-  const proxy = "https:// api.allorigins.win/get?url=";
-  const feedurl = "https://www.nasa.gov/rss/dyn/breaking_news.rss";
-  fetch(proxy + encodeURIComponent(feedurl))
-    .then(response => {
-      if (response.ok) return response.json();
-      throw new Error("Network response was not ok.");
-    })
+
+  const proxy = "https://api.allorigins.win/get?url=";
+  const feedUrl = "https://www.nasa.gov/rss/dyn/breaking_news.rss";
+
+  fetch(proxy + encodeURIComponent(feedUrl))
+    .then(response => response.json())
     .then(data => {
       const parser = new DOMParser();
       const xml = parser.parseFromString(data.contents, "application/xml");
       const items = xml.querySelectorAll("item");
+
       let html = "";
       items.forEach((item, index) => {
-        if (index < 5) { // show only 5 headlines
+        if (index < 5) {
           const title = item.querySelector("title").textContent;
           const link = item.querySelector("link").textContent;
           html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
         }
       });
+
       document.getElementById("news").innerHTML = html;
     })
-    .catch(error => {
-      console.error("Error fetching news:", error);
-      document.getElementById("news").innerHTML = "<li>Could not load news.</li>";
+    .catch(() => {
+      document.getElementById("news").innerHTML = "<li>Could not load space news.</li>";
     });
-
-  async function loadNews() {
-    const response = await fetch("https://www.nasa.gov/rss/dyn/breaking_news.rss");
-    const text = await response.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, "application/xml");
-    const items = xml.querySelectorAll("item");
-
-    let html = "";
-    items.forEach((item, index) => {
-      if (index < 5) { // show only 5 headlines
-        const title = item.querySelector("title").textContent;
-        const link = item.querySelector("link").textContent;
-        html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
-      }
-    });
-
-    document.getElementById("news").innerHTML = html;
-  }
-
-  loadNews();
 </script>
 <br><br>
 <br><br>
@@ -129,7 +108,7 @@
 }
 </style>
 <br><br>
-  <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png" width="150" alt="NASA logo">
+<img src="NASA.png" width="200">
   <div id="apod-container"></div>
 <br><br>
 
