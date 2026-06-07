@@ -64,33 +64,8 @@
 </script>
 
 <br><br>
-<h2>Latest NASA News</h2>
-<ul id="news"></ul>
-<script>
-  const proxy = "https://api.allorigins.win/get?url=";
-  const feedUrl = "https://www.nasa.gov/rss/dyn/breaking_news.rss";
-
-  fetch(proxy + encodeURIComponent(feedUrl))
-    .then(response => response.json())
-    .then(data => {
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data.contents, "application/xml");
-      const items = xml.querySelectorAll("item");
-      let html = "";
-      items.forEach((item, index) => {
-        if (index < 5) {
-          const title = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
-          html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
-        }
-      });
-      document.getElementById("news").innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById("news").innerHTML = "<li>Could not load space news.</li>";
-    });
-</script>
-
+<h2> NASA News!!</h2>
+<p><a href="https://www.nasa.gov/news-release/" target="_blank">Click here to read NASA’s latest news</a></p>
 
 <br><br>
 <br><br>
