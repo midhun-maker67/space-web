@@ -9,57 +9,90 @@
   </style>
 </head>
 <body>
-  <h1>🌌 Space Quiz</h1>
-
+<h1>Space Quiz</h1>
+<div id="quiz"> </div>
+<p id="score"></p>
+<button onclick="submitQuiz()">Submit Quiz</button>
   <p> 1 Which planet is known as the Red Planet?</p>
-  <button onclick="alert('Correct!')">Mars</button>
-  <button onclick="alert('wrong!')">Venus</button>
-  <button onclick="alert('wrong!')">Jupiter</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Mars</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Venus</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Jupiter</button>
 
   <p> 2 Which is the largest planet in our solar system?</p>
-  <button onclick="alert('Correct!')">Jupiter</button>
-  <button onclick="alert('wrong!')">Saturn</button>
-  <button onclick="alert('wrong!')">Earth</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Jupiter</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Saturn</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Earth</button>
 
    <p> 3 Which type of star has the most extreme magnetic field?</p>
-  <button onclick="alert('Correct!')">Magnetar</button>
-  <button onclick="alert('wrong!')">pulsar</button>
-  <button onclick="alert('wrong!')">dwarf star </button>
+  <button onclick="checkAnswer(this, 'Correct!')">Magnetar</button>
+  <button onclick="checkAnswer(this, 'wrong!')">pulsar</button>
+  <button onclick="checkAnswer(this, 'wrong!')">dwarf star </button>
 
   <p> 4 Which is the closest galaxy to our milky way?</p>
-  <button onclick="alert('wrong!')">Andromeda</button>
-  <button onclick="alert('Correct!')"> Canis Major Dwarf Galaxy</button>
-  <button onclick="alert('wrong!')">Sagittarius Dwarf Elliptical Galaxy (SagDEG)</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Andromeda</button>
+  <button onclick="checkAnswer(this, 'Correct!')"> Canis Major Dwarf Galaxy</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Sagittarius Dwarf Elliptical Galaxy (SagDEG)</button>
 
   <p> 5. Which planet has a day longer than its year?</p>
-  <button onclick="alert('Correct!')">Venus</button>
-  <button onclick="alert('wrong!')">Mercury</button>
-  <button onclick="alert('wrong!')">Mars</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Venus</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Mercury</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Mars</button>
 
   <p> 6. What type of star can spin up to 600 times per second?</p>
-  <button onclick="alert('Correct!')">Neutron Star</button>
-  <button onclick="alert('wrong!')">White Dwarf</button>
-  <button onclick="alert('wrong!')">Red Giant</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Neutron Star</button>
+  <button onclick="checkAnswer(this, 'wrong!')">White Dwarf</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Red Giant</button>
 
   <p> 7. How long will it take for the Milky Way and Andromeda to collide?</p>
-  <button onclick="alert('Correct!')">About 4 billion years</button>
-  <button onclick="alert('wrong!')">400 million years</button>
-  <button onclick="alert('wrong!')">40 billion years</button>
+  <button onclick="checkAnswer(this, 'Correct!')">About 4 billion years</button>
+  <button onclick="checkAnswer(this, 'wrong!')">400 million years</button>
+  <button onclick="checkAnswer(this, 'wrong!')">40 billion years</button>
 
   <p> 8. What is the name of the black hole at the center of our galaxy?</p>
-  <button onclick="alert('Correct!')">Sagittarius A*</button>
-  <button onclick="alert('wrong!')">Cygnus X-1</button>
-  <button onclick="alert('wrong!')">Messier 87</button> 
+  <button onclick="checkAnswer(this, 'Correct!')">Sagittarius A*</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Cygnus X-1</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Messier 87</button> 
 
   <p> 9. What is the name of the largest moon in our solar system?</p>
-  <button onclick="alert('Correct!')">Ganymede</button>
-  <button onclick="alert('wrong!')">Callisto</button>
-  <button onclick="alert('wrong!')">Io</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Ganymede</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Callisto</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Io</button>
 
   <p> 10. What is the name of the first artificial satellite launched into space?</p>
-  <button onclick="alert('Correct!')">Sputnik 1</button>
-  <button onclick="alert('wrong!')">Explorer 1</button>
-  <button onclick="alert('wrong!')">Vanguard 1</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Sputnik 1</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Explorer 1</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Vanguard 1</button>
+<script>
+  let score = 0;
+  let totalQuestions = 10;
+
+  function checkAnswer(button, result) {
+    if (result === 'Correct!') {
+      score++;
+      button.style.backgroundColor = "green";
+    } else {
+      button.style.backgroundColor = "red";
+    }
+    // disable all buttons in the same question group
+    const siblings = button.parentNode.querySelectorAll("button");
+    siblings.forEach(b => b.disabled = true);
+  }
+
+  function submitQuiz() {
+    let message = "";
+    if (score === totalQuestions) {
+      message = "🌟 Excellent! Perfect score!";
+    } else if (score >= 7) {
+      message = "🚀 Great job!";
+    } else if (score >= 4) {
+      message = "✨ Keep learning!";
+    } else {
+      message = "🌌 Don’t give up, try again!";
+    }
+    document.getElementById('score').innerText =
+      `Your score: ${score}/${totalQuestions} — ${message}`;
+  }
+</script>
 
   <br><br>
   <a href="index.html">⬅ Back to Home</a>
