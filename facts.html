@@ -22,6 +22,20 @@
         <li><strong>The first human-made object to reach space was the V-2 rocket, launched by Germany in 1944.</strong></li><br>
         <li><strong>The largest known star is Stephenson 2‑18, which is about 2,150 times the radius of the Sun, which makes its volume roughly 10 billion times greater than the Sun’s. In terms of sheer scale, you could fit about 8 million Suns inside Stephenson 2‑18.</strong></li><br>
     </ul>
+    <h2 id=" more space facts"></h2>
+<script>
+  fetch("https://api.api-ninjas.com/v1/facts?limit=1", {
+    headers: { "X-Api-Key": "YOUR_API_KEY" }
+  })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("fact").innerText = data[0].fact;
+    })
+    .catch(() => {
+      document.getElementById("fact").innerText = "Could not load a fact right now.";
+    });
+</script>
+
     <a href="index.html">⬅ Back to Home</a>
     <style>
       a {
