@@ -11,8 +11,6 @@
 <body>
 <h1>Space Quiz</h1>
 <div id="quiz"> </div>
-<p id="score"></p>
-<button onclick="submitQuiz()">Submit Quiz</button>
 <div class="question">
   <p> 1 Which planet is known as the Red Planet?</p>
   <button onclick="checkAnswer(this, 'Correct!')">Mars</button>
@@ -72,7 +70,8 @@
   <button onclick="checkAnswer(this, 'Correct!')">Sputnik 1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Explorer 1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Vanguard 1</button>
-  
+  <p id="score"></p>
+<button onclick="submitQuiz()">Submit Quiz</button>
 </div>
 <script>
   let score = 0;
