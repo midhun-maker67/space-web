@@ -30,14 +30,36 @@
       }
     </style>
 <br><br>
-<a href="facts.html">Discover Space Facts 🌌</a>
- <style>
-      a {
-        color: rgb(234, 255, 0);
-        display: inline-block;
-        margin-top: 20px;
-      }
-    </style>
+<h2>🌌 Space Fact of the Moment</h2>
+<p id="spaceFact"></p>
+<script>
+  const facts = [
+    "Space is completely silent because there is no air to carry sound waves.",
+    "The hottest planet in our solar system is Venus, with temperatures reaching up to 900 degrees Fahrenheit (475 degrees Celsius).",
+    "A day on Venus is longer than a year on Venus. It takes about 243 Earth days for Venus to complete one rotation, while it takes only about 225 Earth days to orbit the Sun!",
+    "Neutron Stars are incredibly dense. A sugar-cube-sized amount of neutron star material would weigh about a billion tons on Earth!",
+    "The largest volcano in our solar system is Olympus Mons on Mars. It is about 13.6 miles (22 kilometers) high, which is nearly three times the height of Mount Everest.",
+    "There are more stars in the universe than grains of sand on all the beaches on Earth.",
+    "The Milky Way galaxy is estimated to contain between 100 and 400 billion stars.",
+    "Astronauts can grow up to 2 inches taller in space due to the lack of gravity compressing their spine.",
+    "The first human-made object to reach space was the V-2 rocket, launched by Germany in 1944.",
+    "The largest known star is Stephenson 2‑18, which is about 2,150 times the radius of the Sun, which makes its volume roughly 10 billion times greater than the Sun’s. In terms of sheer scale, you could fit about 8 million Suns inside Stephenson 2‑18."
+  ];
+let index = 0;
+
+  function showFact() {
+    document.getElementById("spaceFact").innerText = facts[index];
+    index = (index + 1) % facts.length; // loop back to start
+  }
+
+  // Show first fact immediately
+  showFact();
+
+  // Change fact every 10 seconds
+  setInterval(showFact, 10000);
+
+</script>
+
 <br><br>
 <h2 id="quote"></h2>
 
@@ -136,9 +158,11 @@
 <br><br>
 <h2>Interactive Star Map</h2>
 <iframe src="https://stellarium-web.org/" width="100%" height="600" style="border:none;"></iframe>
-<strong><h3>LIVE ISS TRACKER</h3>,</strong>
-<br><br>  
-<img src="iss.jpg" width="200">
+<br><br>
+<br><br>
+<br><br>
+
+<h3>LIVE ISS TRACKER</h3>
 <p id="iss-location">Loading ISS location...</p>
 
 <script>
@@ -161,6 +185,14 @@
   updateISSLocation(); // Initial call
   setInterval(updateISSLocation, 5000); // Update every 5 seconds
 </script>
+<style>
+  #iss-location {
+    font-size: 18px;
+    color: rgb(0, 255, 110);
+    margin-top: 20px;
+  }
+  </style>
+
 
 </body>
 </html>
