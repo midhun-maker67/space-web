@@ -72,6 +72,7 @@
   <button onclick="checkAnswer(this, 'Correct!')">Sputnik 1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Explorer 1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Vanguard 1</button>
+  <P>11. </P>
 </div>
 <script>
   let score = 0;
@@ -103,6 +104,16 @@
     document.getElementById('score').innerText =
       `Your score: ${score}/${totalQuestions} — ${message}`;
   }
+  
+
+// On page load, check if already attempted
+window.onload = function() {
+  if (localStorage.getItem("quizAttempted") === "true") {
+    document.getElementById("quiz").innerHTML =
+      "⚠️ You already attempted this quiz. Your score was: " +
+      localStorage.getItem("quizScore");
+  }
+};
 </script>
 
   <br><br>
