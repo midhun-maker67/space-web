@@ -43,22 +43,23 @@
 </div>
 <div class="question">
   <p> 6. What type of star can spin up to 600 times per second?</p>
-  <button onclick="checkAnswer(this, 'Correct!')">Neutron Star</button>
   <button onclick="checkAnswer(this, 'wrong!')">White Dwarf</button>
   <button onclick="checkAnswer(this, 'wrong!')">Red Giant</button>
+   <button onclick="checkAnswer(this, 'Correct!')">Neutron Star</button>
 </div>
 <div class="question">
   <p> 7. How long will it take for the Milky Way and Andromeda to collide?</p>
-  <button onclick="checkAnswer(this, 'Correct!')">About 4 billion years</button>
+  
   <button onclick="checkAnswer(this, 'wrong!')">400 million years</button>
+  <button onclick="checkAnswer(this, 'Correct!')">About 4 billion years</button>
   <button onclick="checkAnswer(this, 'wrong!')">40 billion years</button>
 </div>
 <div class="question">
   <p> 8. What is the name of the black hole at the center of our galaxy?</p>
-  <button onclick="checkAnswer(this, 'Correct!')">Sagittarius A*</button>
+  
   <button onclick="checkAnswer(this, 'wrong!')">Cygnus X-1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Messier 87</button> 
-</div>
+</div><button onclick="checkAnswer(this, 'Correct!')">Sagittarius A*</button>
 <div class="question">
   <p> 9. What is the name of the largest moon in our solar system?</p>
   <button onclick="checkAnswer(this, 'Correct!')">Ganymede</button>
@@ -72,10 +73,75 @@
   <button onclick="checkAnswer(this, 'wrong!')">Vanguard 1</button>
   <p id="score"></p>
 </div>  
+<div class="question">
+  <p> 11. What is the name of the largest volcano in our solar system?</p>
+  
+  <button onclick="checkAnswer(this, 'wrong!')">Mauna Kea</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Olympus Mons</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Mount Everest</button>
+</div>
+<div class="question">
+  <p> 12. What is the name of the largest asteroid in our solar system?</p>
+  
+  <button onclick="checkAnswer(this, 'wrong!')">Pallas</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Ceres</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Vesta</button>
+</div>
+<div class="question">
+  <p> 13. What is the name of the largest moon of Saturn?</p>
+  
+  <button onclick="checkAnswer(this, 'wrong!')">Enceladus</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Rhea</button> 
+  <button onclick="checkAnswer(this, 'correct!')">Titan</button>
+</div>
+<div class="question">  
+  <p> 14. What is the name of the largest moon of Neptune?</p>
+  
+  <button onclick="checkAnswer(this, 'wrong!')">Nereid</button>
+  <button onclick="checkAnswer(this, 'correct!')">Triton</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Proteus</button>  
+</div>
+<div class="question">  
+  <p> 15. What is the name of the largest moon of Uranus?</p>
+  <button onclick="checkAnswer(this, 'wrong!')">Oberon</button>
+  <button onclick="checkAnswer(this, 'correct!')">Titania</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Ariel</button>
+</div>  
+<div class="question">  
+  <p> 16. What is the name of the largest moon of Pluto?</p>
+  <button onclick="checkAnswer(this, 'Correct!')">Charon</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Nix</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Hydra</button>  
+</div>
+<div class="question">  
+  <p> 17. the fastest pulsar ever known is ?</p>
+  <button onclick="checkAnswer(this, 'wrong!')"> PSR J0952−0607 </button>
+  <button onclick="checkAnswer(this, 'correct!')">PSR J1748−2446ad</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Crab Pulsar</button>
+</div>
+<div class="question">  
+  <p> 18. What is the name of the largest moon of Venus?</p>
+  <button onclick="checkAnswer(this, 'Correct!')">Venus has no moons</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Phobos</button>
+  <button onclick="checkAnswer(this, 'wrong!')">Deimos</button>
+</div>  
+<div class="question">  
+  <p> 19. What is the approximate escape velocity from Earth?</p>
+  <button onclick="checkAnswer(this, 'wrong')">3.9km/s</button>
+  <button onclick="checkAnswer(this, 'wrong!')">7.9 km/s</button>
+  <button onclick="checkAnswer(this, 'correct!')">11.2km/s</button>
+</div>
+<div class="question">  
+  <p> 20. What is the approximate escape velocity from the Moon?</p>
+  <button onclick="checkAnswer(this, 'wrong!')">13.45km/s</button>
+  <button onclick="checkAnswer(this, 'correct!')">2.38 km/s</button>
+  <button onclick="checkAnswer(this, 'wrong!')">1.68 km/s</button>
+</div>
+
 <button onclick="submitQuiz()">Submit Quiz</button>
 <script>
   let score = 0;
-  let totalQuestions = 10;
+  let totalQuestions = 20;
 
   function checkAnswer(button, result) {
     if (result === 'Correct!') {
@@ -110,22 +176,51 @@
     }
 
     document.getElementById("score").innerText =
-      `Your score: ${score}/${totalQuestions} — ${message}`;
+      `${name}, your score: ${score}/${totalQuestions} — ${message}`;
 
     // Save attempt in localStorage
     localStorage.setItem("quizAttempted", "true");
     localStorage.setItem("quizScore", score);
+    localStorage.setItem("quizMessage", message);
+    localStorage.setItem("quizName", name);
+
   }
 
   // On page load, check if already attempted
   window.onload = function() {
     if (localStorage.getItem("quizAttempted") === "true") {
       document.getElementById("quiz").innerHTML =
-        "⚠️ You already attempted this quiz. Your score was: " +
+        `⚠️ You already attempted this quiz. Your score was: ` +
         localStorage.getItem("quizScore");
     }
   };
 </script>
+<style>
+  button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px gold;
+}
+#score {
+  font-size: 32px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 2px 2px 8px black;
+  margin-top: 20px;
+}
+
+</style>
 
   <br><br>
   <a href="index.html">⬅ Back to Home</a>
