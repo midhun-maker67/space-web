@@ -201,6 +201,11 @@ function resetQuiz() {
   localStorage.removeItem("quizAttempted");
   localStorage.removeItem("quizScore");
   score = 0;
+  document.getElementById("score").innerText = "";
+  document.querySelectorAll("button").forEach(button => {
+    button.disabled = false;
+    button.style.backgroundColor = ""; // reset button color
+  });
   location.reload(); // reloads the page fresh
 }
 
