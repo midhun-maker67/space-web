@@ -89,17 +89,13 @@ quoteElement.style.color = colors[Math.floor(Math.random() * colors.length)];
 
 </script>
 <style>
-  #quote
-  {font: size 24px;
-  font-weight: bold; 
-  background-color: linear-gradient( 90deg, cyan,magenta,yellow);
- -webkit-text-fill-color: antiquewhite; }
  #quote {
   font-size: 24px;
-  color: #00ffcc;
+  font-weight: bold;
+  background: linear-gradient(90deg, cyan, magenta, yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow: 0 0 10px #00ffcc, 0 0 20px #ff00ff, 0 0 30px #ffff00;
-}
-#quote {
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -107,8 +103,6 @@ quoteElement.style.color = colors[Math.floor(Math.random() * colors.length)];
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
-
-
 </style>
 
 <br><br>
@@ -218,7 +212,5 @@ quoteElement.style.color = colors[Math.floor(Math.random() * colors.length)];
     margin-top: 20px;
   }
   </style>
-
-
 </body>
 </html>
