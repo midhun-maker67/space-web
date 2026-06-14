@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
   <title>Space Quiz</title>
@@ -19,9 +19,9 @@
 </div>
 <div class="question">
   <p> 2 Which is the largest planet in our solar system?</p>
-  <button onclick="checkAnswer(this, 'Correct!')">Jupiter</button>
   <button onclick="checkAnswer(this, 'wrong!')">Saturn</button>
   <button onclick="checkAnswer(this, 'wrong!')">Earth</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Jupiter</button>
 </div>
 <div class="question">
    <p> 3 Which type of star has the most extreme magnetic field?</p>
@@ -92,19 +92,19 @@
   
   <button onclick="checkAnswer(this, 'wrong!')">Enceladus</button>
   <button onclick="checkAnswer(this, 'wrong!')">Rhea</button> 
-  <button onclick="checkAnswer(this, 'correct!')">Titan</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Titan</button>
 </div>
 <div class="question">  
   <p> 14. What is the name of the largest moon of Neptune?</p>
   
   <button onclick="checkAnswer(this, 'wrong!')">Nereid</button>
-  <button onclick="checkAnswer(this, 'correct!')">Triton</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Triton</button>
   <button onclick="checkAnswer(this, 'wrong!')">Proteus</button>  
 </div>
 <div class="question">  
   <p> 15. What is the name of the largest moon of Uranus?</p>
   <button onclick="checkAnswer(this, 'wrong!')">Oberon</button>
-  <button onclick="checkAnswer(this, 'correct!')">Titania</button>
+  <button onclick="checkAnswer(this, 'Correct!')">Titania</button>
   <button onclick="checkAnswer(this, 'wrong!')">Ariel</button>
 </div>  
 <div class="question">  
@@ -116,7 +116,7 @@
 <div class="question">  
   <p> 17. the fastest pulsar ever known is ?</p>
   <button onclick="checkAnswer(this, 'wrong!')"> PSR J0952−0607 </button>
-  <button onclick="checkAnswer(this, 'correct!')">PSR J1748−2446ad</button>
+  <button onclick="checkAnswer(this, 'Correct!')">PSR J1748−2446ad</button>
   <button onclick="checkAnswer(this, 'wrong!')">Crab Pulsar</button>
 </div>
 <div class="question">  
@@ -127,14 +127,14 @@
 </div>  
 <div class="question">  
   <p> 19. What is the approximate escape velocity from Earth?</p>
-  <button onclick="checkAnswer(this, 'wrong')">3.9km/s</button>
+  <button onclick="checkAnswer(this, 'wrong!')">3.9km/s</button>
   <button onclick="checkAnswer(this, 'wrong!')">7.9 km/s</button>
-  <button onclick="checkAnswer(this, 'correct!')">11.2km/s</button>
+  <button onclick="checkAnswer(this, 'Correct!')">11.2km/s</button>
 </div>
 <div class="question">  
   <p> 20. What is the approximate escape velocity from the Moon?</p>
   <button onclick="checkAnswer(this, 'wrong!')">13.45km/s</button>
-  <button onclick="checkAnswer(this, 'correct!')">2.38 km/s</button>
+  <button onclick="checkAnswer(this, 'Correct!')">2.38 km/s</button>
   <button onclick="checkAnswer(this, 'wrong!')">1.68 km/s</button>
 </div>
 
@@ -176,13 +176,13 @@
     }
 
     document.getElementById("score").innerText =
-      `${name}, your score: ${score}/${totalQuestions} — ${message}`;
+  `Your score: ${score}/${totalQuestions} — ${message}`;
+
 
     // Save attempt in localStorage
     localStorage.setItem("quizAttempted", "true");
     localStorage.setItem("quizScore", score);
-    localStorage.setItem("quizMessage", message);
-    localStorage.setItem("quizName", name);
+    
 
   }
 
