@@ -195,6 +195,13 @@
         localStorage.getItem("quizScore");
     }
   };
+function resetQuiz() {
+  localStorage.removeItem("quizAttempted");
+  localStorage.removeItem("quizScore");
+  score = 0;
+  location.reload(); // reloads the page fresh
+}
+
 </script>
 <style>
   button {
@@ -225,6 +232,7 @@ button:hover {
 
   <br><br>
   <a href="index.html">⬅ Back to Home</a>
+  <button onclick="resetQuiz()">Play Again</button>
    <style>
       a {
         color: yellow;
