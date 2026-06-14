@@ -59,7 +59,8 @@
   
   <button onclick="checkAnswer(this, 'wrong!')">Cygnus X-1</button>
   <button onclick="checkAnswer(this, 'wrong!')">Messier 87</button> 
-</div><button onclick="checkAnswer(this, 'Correct!')">Sagittarius A*</button>
+<button onclick="checkAnswer(this, 'Correct!')">Sagittarius A*</button>
+</div>
 <div class="question">
   <p> 9. What is the name of the largest moon in our solar system?</p>
   <button onclick="checkAnswer(this, 'Correct!')">Ganymede</button>
@@ -144,16 +145,16 @@
   let totalQuestions = 20;
 
   function checkAnswer(button, result) {
-    if (result === 'Correct!') {
-      score++;
-      button.style.backgroundColor = "green";
-    } else {
-      button.style.backgroundColor = "red";
-    }
-    // disable all buttons in the same question group
-    const siblings = button.parentNode.querySelectorAll("button");
-    siblings.forEach(b => b.disabled = true);
+  if (result === 'Correct!') {
+    score++;
+    button.style.backgroundColor = "green";
+  } else {
+    button.style.backgroundColor = "red";
   }
+  // disable all buttons in the same question group
+  const siblings = button.parentNode.querySelectorAll("button");
+  siblings.forEach(b => b.disabled = true);
+}
 
   function submitQuiz() {
     // If already attempted, block resubmission
