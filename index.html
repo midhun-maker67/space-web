@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COSMO EXPLORER</title>
+<img src="{{ url_for('static', filename='space kid.png') }}" alt="space kid image" width="200">
+
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='wallp.jpg') }}");
+    background-size: cover;       
+    background-position: center; 
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+  }
+  a {
+    color: rgb(212, 255, 0);
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 17, 255);
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+  <h1>{{ greet }}</h1>
+  <p><strong>This is our webpage where you will get live updates about astronomical discoveries, major NASA updates, live wallpapers, fun quizzes and mindblowing space facts!</strong></p>
+
+  <nav style="background-color:#007bff; padding:10px;">
+    <a href="/quiz" style="color:white; margin:0 15px;">Quiz</a>
+  </nav>
+
+  <h1>Ask COSMO AI 🤖</h1>
+<input id="questionInput" type="text" placeholder="Type your question here..." 
+       style="width: 300px; padding: 10px; border-radius: 5px; border: none;">
+<button id="askButton" 
+        style="padding: 10px 20px; border-radius: 5px; border: none; background-color: #007bff; color: white;">
+  Ask
+</button>
+<div id="answerContainer"></div>
+<style>
+ #answerContainer {
+  margin-top: 20px;
+  font-size: 18px;
+  color: gold;
+  text-shadow: 1px 1px 5px rgb(0, 0, 0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+</style>
+
+<script>
+document.getElementById("askButton").addEventListener("click", async function() {
+  const question = document.getElementById("questionInput").value.trim();
+  if (question) {
+    document.getElementById("answerContainer").innerText = "🤖 COSMO AI is thinking...";
+    
+    const response = await fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: question })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      document.getElementById("answerContainer").innerText = data.answer;
+    } else {
+      document.getElementById("answerContainer").innerText = "⚠️ COSMO AI could not reach the server.";
+    }
+  } else {
+    document.getElementById("answerContainer").innerText = "Please enter a question.";
+  }
+});
+</script>
+
+
+  <h2>🌌 Space Fact of the Moment</h2>
+  <p id="spaceFact"></p>
+  <script>
+    const facts = [
+      "Space is completely silent because there is no air to carry sound waves.",
+      "The hottest planet in our solar system is Venus, with temperatures reaching up to 900°F (475°C).",
+      "A day on Venus is longer than a year on Venus.",
+      "Neutron Stars are incredibly dense — a sugar cube would weigh a billion tons!",
+      "Olympus Mons on Mars is nearly three times taller than Mount Everest.",
+      "There are more stars in the universe than grains of sand on Earth.",
+      "The Milky Way contains between 100 and 400 billion stars.",
+      "Astronauts can grow up to 2 inches taller in space.",
+      "The first human-made object to reach space was the V-2 rocket in 1944.",
+      "Stephenson 2‑18 is the largest known star — 8 million Suns could fit inside!"
+    ];
+    let index = 0;
+    function showFact() {
+      document.getElementById("spaceFact").innerText = facts[index];
+      index = (index + 1) % facts.length;
+    }
+    showFact();
+    setInterval(showFact, 10000);
+  </script>
+  <style>
+    #spaceFact {
+      font-size: 24px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 8px black;
+      margin-top: 20px;
+    }
+  </style>
+
+  <h2 id="quote"></h2>
+  <script>
+    const quotes = [
+      "Somewhere, something incredible is waiting to be known. - Carl Sagan",
+      "The cosmos is within us. We are made of star-stuff. - Carl Sagan",
+      "The Earth is a very small stage in a vast cosmic arena. - Carl Sagan",
+      "The universe is under no obligation to make sense to you. - Neil deGrasse Tyson",
+      "The universe is a grand book written in the language of mathematics. - Galileo Galilei"
+    ];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("quote").innerText = quotes[randomIndex];
+  </script>
+  <style>
+    #quote {
+      font-size: 24px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px yellow;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+
+  <h2>NASA News!!</h2>
+  <p><a href="https://www.nasa.gov/news-release/" target="_blank"><strong>Click here to read NASA’s latest news</strong></a></p>
+
+  <div class="button-bar">
+    <a href="https://science.nasa.gov/citizen-science/" target="_blank" class="nav-button">🌍 NASA Citizen Science</a>
+    <a href="https://www.space.com" target="_blank" class="nav-button">🚀 Explore Space.com</a>
+  </div>
+  <style>
+    .button-bar { text-align: center; }
+    .nav-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: red;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      margin: 10px; 
+      transition: 0.3s;
+    }
+    .nav-button:hover {
+      background-color: darkred;
+      box-shadow: 0 0 15px red;
+    }
+  </style>
+
+  <img src="{{ url_for('static', filename='NASA.png') }}" alt="NASA logo" width="120px">
+
+  <h4><strong>Today's Astronomy Picture of the Day:</strong></h4>
+  <div id="apod-container"></div>
+  <script>
+    const apiKey = "IICgAwBdEooz0YimJw79IV6iYtXb90gNUv0hD5SA";
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        if (data.media_type === "image") {
+          document.getElementById("apod-container").innerHTML = `
+            <h2>${data.title}</h2>
+            <img src="${data.url}" alt="${data.title}" style="max-width:80%; border-radius:15px;">
+            <p>${data.explanation}</p>
+          `;
+        } else if (data.media_type === "video") {
+          document.getElementById("apod-container").innerHTML = `
+            <h2>${data.title}</h2>
+            <iframe src="${data.url}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            <p>${data.explanation}</p>
+          `;
+        }
+      })
+      .catch(() => {
+        document.getElementById("apod-container").innerHTML = "<p>Could not load today's wallpaper.</p>";
+      });
+  </script>
+
+  <h2>Interactive Star Map</h2>
+  <iframe src="https://stellarium-web.org/" width="100%" height="600" style="border:none;"></iframe>
+
+  <h3>LIVE ISS TRACKER</h3>
+  <img src="{{ url_for('static', filename='iss.jpg') }}" alt="ISS image" style="max-width: 400px; border-radius: 10px;">
+  <p id="iss-location">Loading ISS location...</p>
+  <script>
+    function updateISSLocation() {
+      fetch("https://api.wheretheiss.at/v1/satellites/25544")
+        .then(response => response.json())
+        .then(data => {
+          const latitude = data.latitude.toFixed(2);
+          const longitude = data.longitude.toFixed(2);
+          const altitude = data.altitude.toFixed(2);
+          document.getElementById("iss-location").innerText =
+            `Current ISS Location → Latitude: ${latitude}, Longitude: ${longitude}, Altitude: ${altitude} km`;
+        })
+        .catch(() => {
+          document.getElementById("iss-location").innerText = "Could not load ISS location.";
+        });
+    }
+    updateISSLocation();
+    setInterval(updateISSLocation, 5000);
+  </script>
+  <style>
+    #iss-location {
+      font-size: 18px;
+      color: rgb(0, 255, 110);
+      margin-top: 20px;
+    }
+  </style>
+
+  <footer>
+    © 2026 COSMO EXPLORER. All rights reserved.
+  </footer>
+</body>
+</html>
